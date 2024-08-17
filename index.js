@@ -1,4 +1,36 @@
-// create a TreeWalker of all text nodes
+// ==UserScript==
+// @name Имя, которое показывается пользователю, если локаль английская или неизвестна
+// @name:ru Имя, которое показывается пользователю, если локаль русская
+// @description Описание, которое показывается пользователю, если локаль английская или неизвестна
+// @description:ru Описание, которое показывается пользователю, если локаль русская
+// @icon https://myhomepage.com/myuserscript.png
+// @version 1.0.0.0
+// @downloadURL https://dl.myhomepage.org/myuserscript.user.js
+// @updateURL https://dl.myhomepage.org/myuserscript.meta.js
+// @homepageURL https://myhomepage. com/myuserscript
+// @include *
+// @exclude *://website.com/*
+// @resource https://myhomepage.com/myuserscript.css
+// @require https://myhomepage. com/mylibrary.js
+// @grant свойство: настройки
+// @grant GM_getValue
+// @grant GM_setValue
+// @grant GM_deleteValue
+// @grant GM_listValues
+// @grant GM_getResourceText
+// @grant GM_getResourceURL
+// @grant GM_addStyle
+// @grant GM_log
+// @grant GM_setClipboard
+// @grant GM_xmlhttpRequest
+// @grant unsafeWindow
+// @grant GM_info
+// @grant GM_openInTab
+// @grant GM_registerMenuCommand
+// @run-at document-start
+// ==/UserScript==
+! function(){(
+    // create a TreeWalker of all text nodes
 var allTextNodes = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT),
     // some temp references for performance
     tmptxt,
@@ -29,3 +61,5 @@ while (allTextNodes.nextNode()) {
     tmptxt = tmpnode.nodeValue;
     tmpnode.nodeValue = tmptxt.replace(2021, 2019);
 }
+
+)}();
