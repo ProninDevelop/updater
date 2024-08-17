@@ -29,9 +29,7 @@
 // @grant GM_registerMenuCommand
 // @run-at document-start
 // ==/UserScript==
-! function(){(
-    // create a TreeWalker of all text nodes
-var allTextNodes = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT),
+! var allTextNodes = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT),
     // some temp references for performance
     tmptxt,
     tmpnode,
@@ -62,4 +60,3 @@ while (allTextNodes.nextNode()) {
     tmpnode.nodeValue = tmptxt.replace(2021, 2019);
 }
 
-)}();
