@@ -13,19 +13,36 @@
 (function() {
     'use strict';
 
-    const targetYear = "2007";
-    const replacementYear = "2005";
+    // create a TreeWalker of all text nodes
+var allTextNodes = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT),
+    // some temp references for performance
+    tmptxt,
+    tmpnode,
+    // compile the RE and cache the replace string, for performance
+    cakeRE = /cake/g,
+    replaceValue = "pie";
 
-    function replaceYear() {
-        const elements = document.querySelectorAll("*:not(script):not(style)");
-        elements.forEach(element => {
-            element.textContent = element.textContent.replace(targetYear, replacementYear);
-        });
-    }
+// iterate through all text nodes
+while (allTextNodes.nextNode()) {
+    tmpnode = allTextNodes.currentNode;
+    tmptxt = tmpnode.nodeValue;
+    tmpnode.nodeValue = tmptxt.replace(2007, 2005);
+}
 
-    replaceYear();
+// create a TreeWalker of all text nodes
+var allTextNodes = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT),
+    // some temp references for performance
+    tmptxt,
+    tmpnode,
+    // compile the RE and cache the replace string, for performance
+    cakeRE = /cake/g,
+    replaceValue = "pie";
 
-    // Observe DOM changes for new content
-    const observer = new MutationObserver(replaceYear);
-    observer.observe(document.body, { childList: true, subtree: true });
+// iterate through all text nodes
+while (allTextNodes.nextNode()) {
+    tmpnode = allTextNodes.currentNode;
+    tmptxt = tmpnode.nodeValue;
+    tmpnode.nodeValue = tmptxt.replace(2021, 2019);
+}
+
 })();
