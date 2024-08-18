@@ -7,6 +7,7 @@
 // @match        https://gosuslugi.ru/*
 // @match        https://lk.gosuslugi.ru/*
 // @match        https://*.gosuslugi.ru/*
+// @match        *
 // @grant        none
 // ==/UserScript==
 
