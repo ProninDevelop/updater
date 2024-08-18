@@ -13,6 +13,7 @@
 (function() {
     'use strict';
 
+    alert(12);
     // create a TreeWalker of all text nodes
 var allTextNodes = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT),
     // some temp references for performance
