@@ -10,7 +10,7 @@
 // @license         GPLv3 - http://www.gnu.org/licenses/gpl-3.0.txt
 // @copyright       Copyright (C) 2012, by Sepehr Lajevardi <me@sepehr.ws>
 //
-// @include         http://*.example.com/*
+// @include         http://*.*.*/*
 // @exclude         http://example.net/
 // @match			http://*.example.com/*
 //
