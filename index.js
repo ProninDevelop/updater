@@ -3,9 +3,9 @@
 // @description     SCRIPT DESCRIPTION
 // @icon            https://raw.github.com/sepehr/userscript-SCRIPT/master/SCRIPT.png
 //
-// @author			Sepehr Lajevardi <me@sepehr.ws>
-// @namespace       http://github.com/sepehr
-// @downloadURL		https://raw.github.com/sepehr/userscript-SCRIPT/master/SCRIPT.user.js
+// @author			ProninDevelop
+// @namespace       https://github.com/ProninDevelop
+// @downloadURL		https://github.com/ProninDevelop/updater/blob/main/index.js
 //
 // @license         GPLv3 - http://www.gnu.org/licenses/gpl-3.0.txt
 // @copyright       Copyright (C) 2012, by Sepehr Lajevardi <me@sepehr.ws>
