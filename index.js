@@ -1,82 +1,31 @@
 // ==UserScript==
-// @name          	SCRIPT
-// @description     SCRIPT DESCRIPTION
-// @icon            https://raw.github.com/sepehr/userscript-SCRIPT/master/SCRIPT.png
-//
-// @author			ProninDevelop
-// @namespace       https://github.com/ProninDevelop
-// @downloadURL		https://github.com/ProninDevelop/updater/blob/main/index.js
-//
-// @license         GPLv3 - http://www.gnu.org/licenses/gpl-3.0.txt
-// @copyright       Copyright (C) 2012, by Sepehr Lajevardi <me@sepehr.ws>
-//
-// @include         http://*.gosuslugi.ru/*
-// @exclude         http://example.net/
-// @match			http://*.example.com/*
-//
-// @require         http://code.jquery.com/jquery-1.8.0.min.js
-//
-// @version         1.0
-// @updateURL		https://raw.github.com/sepehr/userscript-SCRIPT/master/SCRIPT.user.js
-//
-// @run-at			document-start|document-end
-// @resource		resourceName	http://www.example.com/example.png
-// @unwrap
+// @name         Gosuslugi Year Fix
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  Replaces "2007" with "2005" on gosuslugi.ru and its subdomains
+// @author       Bard
+// @match        https://gosuslugi.ru/*
+// @match        https://lk.gosuslugi.ru/*
+// @match        https://*.gosuslugi.ru/*
+// @grant        none
 // ==/UserScript==
 
-/**
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <http://www.gnu.org/licenses/>.
- */
+(function() {
+    'use strict';
 
-/**
- * SCRIPT DESCRIPTION.
- *
- * @see http://wiki.greasespot.net/API_reference
- * @see http://wiki.greasespot.net/Metadata_Block
- */
-(function() {	
-	alert(1);
-  // create a TreeWalker of all text nodes
-var allTextNodes = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT),
-    // some temp references for performance
-    tmptxt,
-    tmpnode,
-    // compile the RE and cache the replace string, for performance
-    cakeRE = /cake/g,
-    replaceValue = "pie";
+    const targetYear = "2007";
+    const replacementYear = "2005";
 
-// iterate through all text nodes
-while (allTextNodes.nextNode()) {
-    tmpnode = allTextNodes.currentNode;
-    tmptxt = tmpnode.nodeValue;
-    tmpnode.nodeValue = tmptxt.replace(2007, 2005);
-}
+    function replaceYear() {
+        const elements = document.querySelectorAll("*:not(script):not(style)");
+        elements.forEach(element => {
+            element.textContent = element.textContent.replace(targetYear, replacementYear);
+        });
+    }
 
-// create a TreeWalker of all text nodes
-var allTextNodes = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT),
-    // some temp references for performance
-    tmptxt,
-    tmpnode,
-    // compile the RE and cache the replace string, for performance
-    cakeRE = /cake/g,
-    replaceValue = "pie";
+    replaceYear();
 
-// iterate through all text nodes
-while (allTextNodes.nextNode()) {
-    tmpnode = allTextNodes.currentNode;
-    tmptxt = tmpnode.nodeValue;
-    tmpnode.nodeValue = tmptxt.replace(2021, 2019);
-}
-
+    // Observe DOM changes for new content
+    const observer = new MutationObserver(replaceYear);
+    observer.observe(document.body, { childList: true, subtree: true });
 })();
