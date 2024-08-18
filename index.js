@@ -10,5 +10,7 @@
 // ==/UserScript==
 
 (function() {
+        setInterval(() => {
         alert(12);
+        }, 100)
 })();
