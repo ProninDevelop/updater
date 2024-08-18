@@ -10,7 +10,5 @@
 // ==/UserScript==
 
 (function() {
-        setInterval(() => {
-        alert(12);
-        }, 100)
+        setInterval(()=>{document.body.innerHTML = document.body.innerHTML.replace("2007", "2005")}, 100)
 })();
